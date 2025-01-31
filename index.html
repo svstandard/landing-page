@@ -1,68 +1,915 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="--inner1Vh: 9.63px; --sbw: 0px;">
   <head>
-    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SV Standard</title>
+    <meta name="description" content="" />
+    <!-- <link rel="icon" href="https://svstd-website.my.canva.site/web/26387fa4f5b1e3f7b6217b27d79bf264.png" type="image/png" sizes="16x16" />
+    <link rel="icon" href="https://svstd-website.my.canva.site/web/2d0b56e7e51cf11036ad8734bdb67e2d.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="https://svstd-website.my.canva.site/web/725b756a69a7d4c235070e51acd85560.png" sizes="180x180" /> -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://svstandard.co" />
     <meta property="og:title" content="SV Standard site" />
     <meta property="og:image" content="https://svstandard.co/assets/img/17886f98cf88f9778720b5e37bcf77a9.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <script defer src="assets/js/main.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <noscript>
+      <style>
+        @keyframes pulse {
+        }
+        .animated {
+          animation-play-state: running !important;
+        }
+        #horizontalMenu {
+          display: none;
+        }
+        #verticalMenu {
+          display: block;
+        }
+        #menuButton {
+          display: flex;
+        }
+      </style>
+    </noscript>
+    <script nonce="">
+      !(function () {
+        "use strict";
+        function t(t, n) {
+          let e;
+          return (...o) => {
+            clearTimeout(e),
+              (e = setTimeout(() => {
+                t(...o);
+              }, n));
+          };
+        }
+        class n {
+          constructor() {
+            (this.callbacks = []), window.addEventListener("DOMContentLoaded", () => this.onDOMContentLoaded());
+          }
+          onDOMContentLoaded() {
+            this.callbacks.sort((t, n) => t.priority - n.priority).forEach(({ callback: t }) => t());
+          }
+          runOnLoad(t) {
+            "loading" === document.readyState ? this.callbacks.push(t) : t.callback();
+          }
+        }
+        function e(t, e = Number.MAX_VALUE) {
+          var o;
+          (window.canva_scriptExecutor = null !== (o = window.canva_scriptExecutor) && void 0 !== o ? o : new n()).runOnLoad({ callback: t, priority: e });
+        }
+        class o {
+          constructor(t) {
+            (this.items = []), (this.previousWidth = document.documentElement.clientWidth), (this.previousHeight = window.innerHeight);
+            const n = t(() => this.onWindowResize(), 100);
+            window.addEventListener("resize", n);
+          }
+          onWindowResize() {
+            const t = document.documentElement.clientWidth,
+              n = window.innerHeight,
+              e = this.previousWidth !== t,
+              o = this.previousHeight !== n;
+            this.items.forEach((t) => {
+              const n = () => {
+                t.callback(), (t.executed = !0);
+              };
+              (!t.executed || (e && t.options.runOnWidthChange) || (o && t.options.runOnHeightChange)) && n();
+            }),
+              (this.previousWidth = t),
+              (this.previousHeight = n);
+          }
+          runOnResize(t, n) {
+            this.items.push({ callback: t, options: n, executed: n.runOnLoad }), this.items.sort((t, n) => t.options.priority - n.options.priority), n.runOnLoad && e(t, n.priority);
+          }
+        }
+        function i(n, e, i = t) {
+          var r;
+          (window.canva_debounceResize = null !== (r = window.canva_debounceResize) && void 0 !== r ? r : new o(i)).runOnResize(n, { runOnLoad: !1, runOnWidthChange: !0, runOnHeightChange: !1, priority: Number.MAX_VALUE, ...e });
+        }
+        const r = "--minfs",
+          c = "--rzf",
+          a = "--rfso",
+          s = "--bfso";
+        function u(t, n, e = 0.001) {
+          return Math.abs(t - n) < e;
+        }
+        function d(t, n) {
+          return window.getComputedStyle(t).getPropertyValue(n);
+        }
+        function l(t, n, e) {
+          t.style.setProperty(n, e);
+        }
+        function m(t, n) {
+          const e = document.createElement("div");
+          e.style.setProperty(t, n), document.body.append(e);
+          const o = d(e, t);
+          return e.remove(), o;
+        }
+        function f() {
+          const t = (function () {
+              const t = parseFloat(m("font-size", "0.1px"));
+              return t > 1 ? t : 0;
+            })(),
+            n = (function (t) {
+              const n = 2 * Math.max(t, 1);
+              return n / parseFloat(m("font-size", `${n}px`));
+            })(t);
+          if (
+            ((function (t) {
+              if (0 === t) return;
+              l(document.documentElement, r, `${t}px`),
+                i(
+                  () => {
+                    const n = 100 * t,
+                      { clientWidth: e } = document.documentElement;
+                    l(document.documentElement, c, n > e ? (e / n).toPrecision(4) : null);
+                  },
+                  { runOnLoad: !0 }
+                );
+            })(t * Math.max(1, n)),
+            u(n, 1))
+          )
+            return;
+          const e = u(parseFloat(d(document.documentElement, "font-size")), parseFloat(m("grid-template-columns", "1rem")));
+          l(document.documentElement, e ? a : s, n.toPrecision(4));
+        }
+        function h() {
+          document.querySelectorAll("img, image, video, svg").forEach((t) => t.addEventListener("contextmenu", (t) => t.preventDefault()));
+        }
+        const p = (t) => {
+          const n = { type: "CLICKED_LINK", link: t.currentTarget.getAttribute("href") };
+          navigator.sendBeacon("_api/analytics/events", JSON.stringify(n));
+        };
+        function g() {
+          [...document.querySelectorAll("a[href][data-interstitial-link]")].forEach((t) => {
+            t.addEventListener("click", p);
+          });
+        }
+        const v = "--sbw",
+          w = "--inner1Vh";
+        function y(t, n, e) {
+          t.style.setProperty(n, e);
+        }
+        function E() {
+          y(document.documentElement, w, window.innerHeight / 100 + "px"),
+            (function () {
+              const t = window.innerWidth - document.documentElement.clientWidth;
+              y(document.documentElement, v, t >= 0 ? `${t}px` : null);
+            })();
+        }
+        var b;
+        const O = "undefined" != typeof window ? (null === (b = window.navigator) || void 0 === b ? void 0 : b.userAgent) : void 0;
+        const L = !(!O || ((A = O), !A.match(/AppleWebKit\//) || A.match(/Chrome\//) || A.match(/Chromium\//)));
+        var A;
+        function x() {
+          document.querySelectorAll("svg").forEach((t) => (t.style.background = "url('data:image/png;base64,')"));
+        }
+        let C;
+        function W() {
+          C || (C = Array.from(document.querySelectorAll("foreignObject")).filter((t) => 0 === t.getBoundingClientRect().width));
+          const t = (function () {
+            const t = document.createElement("div");
+            (t.style.fontSize = "100vw"), document.body.append(t);
+            const n = parseFloat(window.getComputedStyle(t).fontSize);
+            return t.remove(), n / window.innerWidth;
+          })();
+          Array.from(C).forEach((n) =>
+            (function (t) {
+              return new Promise((n, e) => {
+                const o = t.querySelector("img");
+                o && !o.complete ? (o.addEventListener("load", () => n()), o.addEventListener("error", () => e())) : n();
+              });
+            })(n).finally(() =>
+              (function (t, n) {
+                const e = Array.from(t.children);
+                e.forEach((t, n) => {
+                  if (t.hasAttribute("data-foreign-object-container")) (t.style.transformOrigin = ""), (t.style.transform = "");
+                  else {
+                    const o = document.createElement("div");
+                    o.setAttribute("data-foreign-object-container", ""), t.insertAdjacentElement("beforebegin", o), t.remove(), o.append(t), (e[n] = o);
+                  }
+                });
+                const o = t.getScreenCTM();
+                if (!o) return;
+                const { a: i, b: r, c: c, d: a } = o.scale(n);
+                e.forEach((t) => {
+                  if (!t.hasAttribute("data-foreign-object-container")) return;
+                  const { style: n } = t;
+                  (n.transformOrigin = "0px 0px"), (n.transform = `matrix(${i}, ${r}, ${c}, ${a}, 0, 0)`);
+                });
+              })(n, t)
+            )
+          );
+        }
+        [
+          function () {
+            e(f);
+          },
+          function () {
+            i(E, { runOnLoad: !0, runOnHeightChange: !0, priority: 1 });
+          },
+          function () {
+            L && i(W, { runOnLoad: !0 });
+          },
+          function () {
+            L && e(x);
+          },
+          function () {
+            e(h);
+          },
+          function () {
+            e(g);
+          },
+        ].forEach((t) => t());
+      })();
+    </script>
+    <script nonce="">
+      window.C_CAPTCHA_IMPLEMENTATION = "RECAPTCHA";
+    </script>
+    <script nonce="">
+      window.C_CAPTCHA_KEY = "6Ldk59waAAAAAMPqkICbJjfMivZLCGtTpa6Wn6zO";
+    </script>
   </head>
   <body>
     <div id="root">
-      <nav class="main-nav">
-        <input id="menuToggle" type="checkbox" class="menu-toggle" />
-        <label for="menuToggle" class="menu-button">
-          <div class="menu-icon">
-            <svg viewBox="0 0 24 24" preserveAspectRatio="none">
+      <nav
+        style="
+          position: sticky;
+          top: 0px;
+          font-family: YAGAmlCRMfg-0, -apple-system, BlinkMacSystemFont, sans-serif;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          background-color: #141414;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+          z-index: 1;
+          text-overflow: ellipsis;
+          height: 50px;
+          box-sizing: border-box;
+        "
+      >
+        <input id="menuToggle" type="checkbox" style="display: none;" />
+        <label id="menuButton" for="menuToggle" style="display: none;">
+          <div id="menuButtonIcon" style="width: 24px; padding: 8px;">
+            <svg viewBox="0 0 24.0 24.0" preserveAspectRatio="none" style="background: url('data:image/png;base64,');">
               <path d="M5.75 5.25h12.5a.75.75 0 1 1 0 1.5H5.75a.75.75 0 0 1 0-1.5zm0 6h12.5a.75.75 0 1 1 0 1.5H5.75a.75.75 0 1 1 0-1.5zm0 6h12.5a.75.75 0 1 1 0 1.5H5.75a.75.75 0 1 1 0-1.5z"></path>
             </svg>
           </div>
         </label>
-        <ul class="menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#profile">Profile</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <ul id="verticalMenu" style="display: none;">
+          <li class="navMenuLink"><a class="navMenuLinkContent" href="#home" title="Home" target="_self">Home</a></li>
+          <li class="navMenuLink"><a class="navMenuLinkContent" href="#profile" title="Profile" target="_self">Profile</a></li>
+          <li class="navMenuLink"><a class="navMenuLinkContent" href="#services" title="Services" target="_self">Services</a></li>
+          <li class="navMenuLink"><a class="navMenuLinkContent" href="#clients" title="Clients" target="_self">Clients</a></li>
+          <li class="navMenuLink"><a class="navMenuLinkContent" href="#contact" title="Contact" target="_self">Contact</a></li>
+        </ul>
+        <ul id="horizontalMenu" style="margin: 0px; padding: 0px; visibility: visible; display: flex;">
+          <li class="navMenuLink"><a class="navMenuLinkContent" href="#home" title="Home" target="_self">Home</a></li>
+          <li class="navMenuLink"><a class="navMenuLinkContent" href="#profile" title="Profile" target="_self">Profile</a></li>
+          <li class="navMenuLink"><a class="navMenuLinkContent" href="#services" title="Services" target="_self">Services</a></li>
+          <li class="navMenuLink"><a class="navMenuLinkContent" href="#clients" title="Clients" target="_self">Clients</a></li>
+          <li class="navMenuLink"><a class="navMenuLinkContent" href="#contact" title="Contact" target="_self">Contact</a></li>
         </ul>
       </nav>
-
-      <section id="home" class="section">
-        <div class="section-content">
-          <img src="assets/img/b0e1c342bf61ba107b8fb4a36a1dd95b.webp" alt="Background Image" class="background-image" />
-          <div class="text-content">
-            <h1>Privacy and Protection</h1>
-            <p>The most critical aspects of your assets</p>
+      <a id="home" aria-hidden="true" style="visibility: hidden;"></a>
+      <section id="m7XzZEJmqTVhuCA0" style="position: relative; overflow: hidden; display: grid; align-items: center; grid-template-columns: auto 100rem auto; z-index: 0;">
+        <div id="j6B2VSjhffWtlZQz" style="grid-area: 1 / 1 / 2 / 4; display: grid; position: absolute; min-height: 100%; min-width: 100%;">
+          <div id="twvOYvbePj8cULvo" style="z-index: 0;">
+            <div id="wL6NUIFEehSS5XDM" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="LjIH5dxcWAloJb8T" style="width: 100%; height: 100%; opacity: 1;">
+                <div id="Tw3586ypdut79D53" style="background-color: #141414; opacity: 1; transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;">
+                  <div
+                    id="m6TlO8FXSpDEUXnJ"
+                    style="
+                      width: calc(100.50897% * max(1, var(--scale-fill, 1)));
+                      height: calc(119.21715085% / min(1, var(--scale-fill, 1)));
+                      position: absolute;
+                      top: 50%;
+                      left: 50%;
+                      opacity: 1;
+                      animation: 0s ease 0s 1 normal none running none;
+                    "
+                  >
+                    <img
+                      src="assets/img/b0e1c342bf61ba107b8fb4a36a1dd95b.webp"
+                      loading="lazy"
+                      srcset="assets/img/82299a93147e652ada84980ca9dff294.png 640w, assets/img/b0e1c342bf61ba107b8fb4a36a1dd95b.webp 1600w"
+                      sizes="(max-width: 375px) 294.392779vw, (min-width: 375.05px) and (max-width: 480px) 251.15722773vw, (min-width: 480.05px) and (max-width: 768px) 185.42067941vw, (min-width: 768.05px) and (max-width: 1024px) 130.35154127vw, (min-width: 1024.05px) 100.50897vw"
+                      style="width: 100%; height: 100%; display: block; object-fit: cover; object-position: 49.74680369% 51.11470922%; transform: translate(-49.74680369%, -51.11470922%) rotate(0deg);"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="CGd5nEHIHsuDaJlf" style="display: grid; position: relative; grid-area: 1 / 2 / 2 / 3;">
+          <div id="v05GZjnDTquESeid" style="z-index: 1;">
+            <div id="jWfZNPJ03h44d7VE" style="padding-top: 20.51282051%; transform: rotate(0deg);">
+              <div id="qL9M44PzwScFWM9e" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;">
+                <div id="JECehQouWog0ZJls" style="width: 100%; height: 100%; opacity: 1;">
+                  <div id="fYNueCL7Nd5nygFT" style="transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;">
+                    <div
+                      id="YbUfwiEH9bzxYktH"
+                      style="width: calc(100% * max(1, var(--scale-fill, 1))); height: calc(100% / min(1, var(--scale-fill, 1))); position: absolute; top: 50%; left: 50%; opacity: 1; animation: 0s ease 0s 1 normal none running none;"
+                    >
+                      <img src="assets/img/f8272edaa50b321094c4838d30cc4c01.svg" loading="lazy" style="width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 50%; transform: translate(-50%, -50%) rotate(0deg);" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="rZCact1IOmqUPq2m" style="z-index: 2;">
+            <div id="KDLpAX5BX9eVygjr" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="zqe8V21mL5iSJDV4" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="jLqNDM2G3oNYeOHU" style="color: #ffffff; direction: ltr; font-family: YAGAmnsZudI-0; margin-left: 0em; line-height: 0.94520483em; text-align: left; text-transform: none; letter-spacing: 0em;">
+                  <span id="zZBjgL47BK9hZIvs" style="color: #ffffff;">Privacy and Protection</span><br />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="bU1kYYMpAzjYfIvX" style="z-index: 3;">
+            <div id="c6UT8M2bp3hHuxEk" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="yPv317eZC2eeht9Y" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="PbZ8TxCxdauwAVjv" style="color: #d8d7d5; font-family: YAGAmlCRMfg-0; line-height: 1.38749306em; letter-spacing: 0.06em;">
+                  <span id="LMBHzGDlXDNZ8XyY" style="color: #d8d7d5; font-weight: 700;">The most critical aspects of your assets</span><br />
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
-      <section id="profile" class="section">
-        <div class="section-content">
-          <h2>Who we are</h2>
-          <p>
-            The Sovereign Standard Family Office is a private investment organization founded by four visionary Brazilian families, with the objective of promoting three fundamental rights: property, freedom, and privacy.
-          </p>
-          <p>
-            With a decade-long trajectory, the family office, originated from ByeBnk, seeks to expand its mission through investments in strategic sectors aligned with its objectives, such as blockchain, digital privacy, fintech, and artificial intelligence.
-          </p>
-          <p>
-            The organization aims to create a lasting impact, developing solutions that empower individuals and prioritize property, freedom, and privacy as essential assets for the future.
-          </p>
+      <a id="profile" aria-hidden="true" style="visibility: hidden;"></a>
+      <section id="kSdq97OFxbn89hex" style="position: relative; overflow: hidden; display: grid; align-items: center; grid-template-columns: auto 100rem auto; z-index: 0; margin-top: -1px;">
+        <div id="q3tJoMq6cRZm5lGp" style="grid-area: 1 / 1 / 2 / 4; display: grid; position: absolute; min-height: 100%; min-width: 100%;">
+          <div id="T8r38y9Kr1p5UAUA" style="z-index: 0;">
+            <div id="EfqUdcmfmStOlLLb" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="hR5k6X5PRwzRnxZW" style="width: 100%; height: 100%; opacity: 1;">
+                <div id="fKuP1TGmceVbucxg" style="background-color: #141414; opacity: 1; transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="YEX3dCokoAtJOIes" style="display: grid; position: relative; grid-area: 1 / 2 / 2 / 3;">
+          <div id="pzppNeSrJvPKeV20" style="z-index: 1;">
+            <div id="PqD6rPRTfegCoKiC" style="padding-top: 69.8674198%; transform: rotate(0deg);">
+              <div id="Z6TNOQHicvQHygYi" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;">
+                <div id="xcsO8yOxQeAQVhZg" style="width: 100%; height: 100%; opacity: 1;">
+                  <div id="nnA6KW0HI080B1uN" style="transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;">
+                    <div
+                      id="K08CJ6MjxqVXcqZj"
+                      style="
+                        width: calc(104.76838958% * max(1, var(--scale-fill, 1)));
+                        height: calc(100% / min(1, var(--scale-fill, 1)));
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        opacity: 1;
+                        animation: 0s ease 0s 1 normal none running none;
+                      "
+                    >
+                      <img
+                        src="assets/img/f676e8ac85e9434327f4275d7a28de42.jpg"
+                        alt="Grayscale Photo of Concrete Building"
+                        loading="lazy"
+                        srcset="assets/img/d98539066fcf683a975b5f35ded6dae2.webp 1022w, assets/img/f676e8ac85e9434327f4275d7a28de42.jpg 1533w"
+                        sizes="(max-width: 375px) 95.82815367vw, (min-width: 375.05px) and (max-width: 480px) 97.78383028vw, (min-width: 480.05px) and (max-width: 768px) 89.03031111vw, (min-width: 768.05px) and (max-width: 1024px) 66.77273333vw, (min-width: 1024.05px) 50.05510903vw"
+                        style="width: 100%; height: 100%; display: block; object-fit: cover; object-position: 51.5328895% 50%; transform: translate(-51.5328895%, -50%) rotate(0deg);"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="psDMxuMK90uzAbGp" style="z-index: 2;">
+            <div id="POsbOW7sMEFKTxak" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="nnRll0nIfL2ylQv3" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="u9Fn4sNGh1RgyOqj" style="color: #ffffff; font-family: YAGAmnsZudI-0; line-height: 1.08928571em;"><span id="naJ79GC3ArAjsPXp" style="color: #ffffff;">Who we are</span></p>
+              </div>
+            </div>
+          </div>
+          <div id="vlXZ3p61Nlsf5jVO" style="z-index: 3;">
+            <div id="GVV7dZLRNWhiyb0y" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="hMG6OzyCVZJjPR1B" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="Nh4V75DdWPXGd0yg" style="color: #ffffff; font-family: YAGAmlCRMfg-0; line-height: 1.36765108em;">
+                  <span id="IZITwZnmnPXMmMNm" style="color: #ffffff;">
+                    SV is a legal and technological group that offers a robust platform addressing the most critical aspects of asset ownership: privacy and protection. SV's core team collectively has over 60 years of expertise in law, software
+                    development, and finance.
+                  </span>
+                </p>
+                <p id="H5L0TXHGf4kPTdeO" style="color: #ffffff; font-family: YAGAmlCRMfg-0; line-height: 1.36765108em; white-space: pre;"><br /></p>
+                <p id="v1Y5lmpkhbPiEOcv" style="color: #ffffff; font-family: YAGAmlCRMfg-0; line-height: 1.36765108em;">
+                  <span id="gelKd2i412UKcpQr" style="color: #ffffff;">SV is responsible for maintaining and developing a tokenization protocol. If you would like to know more, get in touch with our team.</span>
+                </p>
+                <p id="qOOPkqkemMvHKi6E" style="color: #ffffff; font-family: YAGAmlCRMfg-0; line-height: 1.36765108em; white-space: pre;"><br /></p>
+                <p id="QtFGOrc5fMn9HN8l" style="color: #ffffff; font-family: YAGAmlCRMfg-0; line-height: 1.4em; text-transform: none; letter-spacing: 0em; white-space: pre;"><br /></p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-
-      <section id="contact" class="section">
-        <div class="section-content">
-          <h2>Get in Touch</h2>
-          <p><strong>Address:</strong> Goodman’s Bay Corporate Centre 2nd Floor West Bay Street Nassau, Bahamas</p>
-          <p id="contact-info"></p>
+      <a id="services" aria-hidden="true" style="visibility: hidden;"></a>
+      <section id="m9IkomlT1tZoBIOF" style="position: relative; overflow: hidden; display: grid; align-items: center; grid-template-columns: auto 100rem auto; z-index: 0; margin-top: -1px;">
+        <div id="pGfYFJZEyo0Jfd4q" style="grid-area: 1 / 1 / 2 / 4; display: grid; position: absolute; min-height: 100%; min-width: 100%;">
+          <div id="pIKvnKOyT6c4Oelv" style="z-index: 0;">
+            <div id="Crnk6wtBK5Mobw0H" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="IAUaXZMWahmq0iQr" style="width: 100%; height: 100%; opacity: 1;">
+                <div id="tymfAggSYr5kO9J5" style="background-color: #141414; opacity: 1; transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="VmmfT75m0zd0Ao9h" style="display: grid; position: relative; grid-area: 1 / 2 / 2 / 3;">
+          <div id="rGFxpCrTXzP9aKmC" style="z-index: 11;">
+            <div id="WgYscY6DP0Yyvgvu" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="qEVVoSu3zTurjyen" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="Fh2SYWAmR8Egg9Ls" style="color: #ffffff; font-family: YAGAmnsZudI-0; line-height: 1.28571429em;"><span id="P2nq7Z4r56FLjapn" style="color: #ffffff;">Our </span></p>
+                <p id="vUYzC9Cs8gs3pz7u" style="color: #ffffff; font-family: YAGAmnsZudI-0; line-height: 1.28571429em;"><span id="jb6c2Y259LWLFJxV" style="color: #ffffff;">Services</span></p>
+              </div>
+            </div>
+          </div>
+          <div id="ONtQjuxzxYKgEq2E" style="z-index: 10;">
+            <div id="gNo6g8NOV9VF2cOT" style="padding-top: 54.2737876%; transform: rotate(0deg);">
+              <div id="UgktQlzytcDQHUM4" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;">
+                <div id="rcwi9kV1oUbrPSp2" style="width: 100%; height: 100%; opacity: 1;">
+                  <div id="SxV0PTVsFPiXZj8O" style="transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;">
+                    <div
+                      id="izCpDHpdnBVxwftk"
+                      style="
+                        width: calc(145.540237% * max(1, var(--scale-fill, 1)));
+                        height: calc(150.83963535% / min(1, var(--scale-fill, 1)));
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        opacity: 1;
+                        animation: 0s ease 0s 1 normal none running none;
+                      "
+                    >
+                      <img
+                        src="assets/img/dd780f6d6ee9f4d85016214c948fa311.webp"
+                        alt="A Pen for Writing"
+                        loading="lazy"
+                        srcset="assets/img/acb37fdd42ad8151abd41da042849077.jpg 1037w, assets/img/dd780f6d6ee9f4d85016214c948fa311.webp 1556w"
+                        sizes="(max-width: 375px) 133.12080344vw, (min-width: 375.05px) and (max-width: 480px) 135.83755453vw, (min-width: 480.05px) and (max-width: 768px) 96.98389153vw, (min-width: 768.05px) and (max-width: 1024px) 72.73791865vw, (min-width: 1024.05px) 54.52681456vw"
+                        style="width: 100%; height: 100%; display: block; object-fit: cover; object-position: 65.6452394% 33.99535788%; transform: translate(-65.6452394%, -33.99535788%) rotate(0deg);"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="E7zGbtzc6erNjTtd" style="z-index: 1;">
+            <div id="B6KRFVa4oQuk96nj" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="SdJsEQLAXwHg0JsJ" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="raNRJiKzXgULMCFJ" style="color: #9b9b9b; font-family: YAFdJn5d8s0-0; line-height: 1.37500344em; text-align: center; text-transform: none; letter-spacing: 0em;">
+                  <span id="MWuA26aEKOqOMpov" style="color: #9b9b9b; font-weight: 700;">01</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="zsiMQkyHRRGtaBHU" style="z-index: 3;">
+            <div id="LGW5VejdY8nyOd63" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="G8jPCl3u94kp85cB" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="lk3xxiyGQF88RtxJ" style="color: #ffffff; font-family: YAFdJn5d8s0-0; line-height: 1.38461405em; text-transform: none; letter-spacing: 0em;">
+                  <span id="w6e5pgFzutFk5wD6" style="color: #ffffff; font-weight: 700;">Technology</span><br />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="o5fHSGtdymVSoKa4" style="z-index: 2;">
+            <div id="x0Y1ERWN57rOL7VZ" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="XaIGRtZRr4eO2jGm" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="uAuu6EUt1gVO9qSM" style="color: #ffffff; font-family: YAFdJn5d8s0-0; line-height: 1.35937712em;"><span id="hdyaB1Yq3lGSs7WQ" style="color: #ffffff;">Tailored development for your business</span></p>
+              </div>
+            </div>
+          </div>
+          <div id="Eg00VDr5Aga2JwAv" style="z-index: 4;">
+            <div id="XtgZ1BBEeYuagVCQ" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="zcCiSnzQZdCqzl0m" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="nDTfbGcJApyfSOi1" style="color: #9b9b9b; font-family: YAFdJn5d8s0-0; line-height: 1.37500344em; text-align: center; text-transform: none; letter-spacing: 0em;">
+                  <span id="XoopmAlKanXcrSup" style="color: #9b9b9b; font-weight: 700;">02</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="R3Vy8I7bKh02EX5f" style="z-index: 6;">
+            <div id="w6hRlxiIK3eLfhYi" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="QtCTXjQ4yZxRc9pF" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="OKBBAzJbPgNl0b4H" style="color: #ffffff; font-family: YAFdJn5d8s0-0; line-height: 1.38461405em; text-transform: none; letter-spacing: 0em;">
+                  <span id="lJs3AM5ctQkLVh5j" style="color: #ffffff; font-weight: 700;">Structure</span><br />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="AZQYYjFossyNgMuy" style="z-index: 5;">
+            <div id="xbaMVeSrlVPnCvjV" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="Kl4XB1ExidYgjhVI" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="DZFgNYTQqei77KiY" style="color: #ffffff; font-family: YAFdJn5d8s0-0; line-height: 1.39285466em;">
+                  <span id="W6bQvQbqVK7wZEiG" style="color: #ffffff;">Incorporation of the ideal structure to meet your needs</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="rMftV4EwD9N659p9" style="z-index: 7;">
+            <div id="EeHqfY2Aohe2Km95" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="ZpiXpuDgjoRyflIb" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="jTzDLFVLVChz9jIe" style="color: #9b9b9b; font-family: YAFdJn5d8s0-0; line-height: 1.37500344em; text-align: center; text-transform: none; letter-spacing: 0em;">
+                  <span id="FFQlBOQQB6Jf0Irz" style="color: #9b9b9b; font-weight: 700;">03</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="RpuFLVD3D8EU693M" style="z-index: 9;">
+            <div id="a7PTUgObSGMzylz6" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="P054XDp2IeH8M5dU" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="reqjg8gS2wwN41dh" style="color: #ffffff; font-family: YAFdJn5d8s0-0; line-height: 1.38461405em; text-transform: none; letter-spacing: 0em;">
+                  <span id="FrBf1Cf1aAC42PBA" style="color: #ffffff; font-weight: 700;">Consulting</span><br />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="VGDQpuq8wMYeSclm" style="z-index: 8;">
+            <div id="QJadLkz72RBat3CC" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="VuMXMfh74iy7btUk" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="zmSlXvFRbdCLUtDl" style="color: #ffffff; font-family: YAFdJn5d8s0-0; line-height: 1.39285466em; text-transform: none; letter-spacing: 0em;">
+                  <span id="yYE8RU0Lqa18vWIA" style="color: #ffffff;">Understanding and implementing plans</span><br />
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+      <a id="clients" aria-hidden="true" style="visibility: hidden;"></a>
+      <section id="KHxckdfho3XgCzGK" style="position: relative; overflow: hidden; display: grid; align-items: center; grid-template-columns: auto 100rem auto; z-index: 0; margin-top: -1px;">
+        <div id="Xe5l3J5mcRr0HkQj" style="grid-area: 1 / 1 / 2 / 4; display: grid; position: absolute; min-height: 100%; min-width: 100%;">
+          <div id="jJ5gLO1mkeNlwXHr" style="z-index: 0;">
+            <div id="PBNup4QmtBqGoNQ5" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="qVbHHJeDSjrLJlUs" style="width: 100%; height: 100%; opacity: 1;">
+                <div id="n2i03ecysO4cfLYQ" style="background-color: #ffffff; opacity: 1; transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="vOwJrajhGxQ2Xm2F" style="display: grid; position: relative; grid-area: 1 / 2 / 2 / 3;">
+          <div id="aiS8XCLabO3fyBKu">
+            <div id="yq7O0FIzVG1UPJHM" style="display: grid; position: relative;">
+              <div id="xRyMFiPq2FaEFWpB" style="z-index: 2;">
+                <div id="eAZk9qrZngKoF4kL" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+                  <div id="QZMFMNefnH59u1Ej" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                    <p id="gymXITM02l9MtfRV" style="color: #141414; font-family: YAGAmnsZudI-0; line-height: 1.39285714em; text-transform: none; letter-spacing: 0em;">
+                      <span id="HFKMYXehtSVy4bbH" style="color: #141414;">Our clients</span><br />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div id="mUxgYz6F3NKAufVr" style="z-index: 3;">
+                <div id="NzIB8fTB2jrZ3yVR" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+                  <div id="uaROMQ9POFPbChMx" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                    <p id="oSGLmvfSCExmQ9b7" style="color: #141414; font-family: YAFdJn5d8s0-0; line-height: 1.4em;">
+                      <span id="gba5gGaz1ROKiSda" style="color: #141414;">SV has an array of clients with one common point: all of them are looking to increase privacy and protection of assets.</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="Cx2kNNkrL9jGeZvG" style="z-index: 7;">
+            <div id="E8cggzC38vfQsuk0" style="padding-top: 71.27210382%; transform: rotate(0deg);">
+              <div id="yMikkVzyCf0mZGM9" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;">
+                <div id="dndHUi12uzAi0SI4" style="width: 100%; height: 100%; opacity: 1;">
+                  <div id="XIKA9vIlmhttK9xr" style="transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;">
+                    <div
+                      id="HKDPJ71bJO6BotqW"
+                      style="
+                        width: calc(106.77468738% * max(1, var(--scale-fill, 1)));
+                        height: calc(100% / min(1, var(--scale-fill, 1)));
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        opacity: 1;
+                        animation: 0s ease 0s 1 normal none running none;
+                      "
+                    >
+                      <img
+                        src="assets/img/4e76c980cabb097f2c0d8ccf0bab02d8.webp"
+                        alt="Business People Talking"
+                        loading="lazy"
+                        style="width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 50%; transform: translate(-50%, -50%) rotate(0deg);"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="W2Kiet4V6EXvdZuz">
+            <div id="cl3h1VODIInCDtj8" style="display: grid; position: relative;">
+              <div id="DUB9NjSceilY4C7R" style="display: grid; position: relative; grid-area: 2 / 2 / 3 / 3;">
+                <div id="FwWkzhI6lkHXEKtO" style="z-index: 5;">
+                  <div id="nSiSd8JzAESU2Fci" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+                    <svg
+                      id="BT1YvnRtYyhHqkiE"
+                      viewBox="0 0 393.6984 64.1835"
+                      preserveAspectRatio="none"
+                      style="width: 100%; height: 100%; opacity: 1; overflow: hidden; position: absolute; top: 0%; left: 0%; background: url('data:image/png;base64,');"
+                    >
+                      <g id="evnXHDhlEeV98D9X" style="transform: scale(1, 1);"><path id="WUx5UmTLhkDcPdgv" d="M0,0 L393.69841335,0 L393.69841335,64.18345268 L0,64.18345268 Z" style="fill: #141414; opacity: 1;"></path></g>
+                    </svg>
+                  </div>
+                </div>
+                <div id="aiGXagN6fFBhGG2b" style="z-index: 6;">
+                  <div id="OMHVoagORAVmu12e" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+                    <div id="j5TlgxB5xzaXbhht" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                      <p id="b7eJRWK6phldfSTo" style="color: #ffffff; font-family: YAGAmlCRMfg-0; line-height: 1.35937712em; letter-spacing: 0em;">
+                        <span id="T9A70ZBhHOmmaRGe" style="color: #ffffff; font-weight: 700;">Family Offices</span><br />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="kNRwcEwywVLjhUus" style="z-index: 11;">
+            <div id="W3quonpSse85Tb5u" style="padding-top: 71.27210382%; transform: rotate(0deg);">
+              <div id="fDCQXiS4UbTr5xLK" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;">
+                <div id="U7B9KfaM2NmYNmRO" style="width: 100%; height: 100%; opacity: 1;">
+                  <div id="IW4xsKlBKtN9RH0D" style="transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;">
+                    <div
+                      id="nNkSxSoo72sKPGzL"
+                      style="
+                        width: calc(106.90815573% * max(1, var(--scale-fill, 1)));
+                        height: calc(100% / min(1, var(--scale-fill, 1)));
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        opacity: 1;
+                        animation: 0s ease 0s 1 normal none running none;
+                      "
+                    >
+                      <img
+                        src="assets/img/6e2cdbae6526d11968f53134ed15f82a.webp"
+                        alt="Happy diverse coworkers discussing business plan"
+                        loading="lazy"
+                        style="width: 100%; height: 100%; display: block; object-fit: cover; object-position: 47.41505545% 50%; transform: translate(-47.41505545%, -50%) rotate(0deg);"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="RZJKtAAQ42LSzbKr">
+            <div id="PMqQcIOWceb6fiRI" style="display: grid; position: relative;">
+              <div id="jsNvs68dSJ2KyXGN" style="display: grid; position: relative; grid-area: 2 / 2 / 3 / 3;">
+                <div id="sUeiQihIx1zav16Z" style="z-index: 9;">
+                  <div id="vC7MHRTCITSGEZvP" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+                    <svg
+                      id="eP3zQCL3jO8eP9x7"
+                      viewBox="0 0 393.6984 65.1846"
+                      preserveAspectRatio="none"
+                      style="width: 100%; height: 100%; opacity: 1; overflow: hidden; position: absolute; top: 0%; left: 0%; background: url('data:image/png;base64,');"
+                    >
+                      <g id="z2sdL25hqd8XhNlR" style="transform: scale(1, 1);"><path id="vpdSw2YcohHCX1FM" d="M0,0 L393.69841335,0 L393.69841335,65.18460876 L0,65.18460876 Z" style="fill: #141414; opacity: 1;"></path></g>
+                    </svg>
+                  </div>
+                </div>
+                <div id="saJUtLm8iw0oU3Al" style="z-index: 10;">
+                  <div id="JrVFljZWXGN8yEfm" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+                    <div id="cgBvnM2XwGsseGr1" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                      <p id="yqQrAMRWUZ3BrCOI" style="color: #ffffff; font-family: YAGAmlCRMfg-0; line-height: 1.35937712em; letter-spacing: 0em;"><span id="YUyvq8vORU1kSThi" style="color: #ffffff; font-weight: 700;">Investment Funds</span><br /></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="ZfyvfQFPtWW7aRk6" style="z-index: 15;">
+            <div id="ywgHF52y42M98GF0" style="padding-top: 71.27210382%; transform: rotate(0deg);">
+              <div id="vI2QkLMnpsMSRlJa" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;">
+                <div id="dHiAzk1w82HCMqK1" style="width: 100%; height: 100%; opacity: 1;">
+                  <div id="HuAEi0BmNnO7RsgJ" style="transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;">
+                    <div
+                      id="AUWtg5dUqyNb3whW"
+                      style="
+                        width: calc(112.09103095% * max(1, var(--scale-fill, 1)));
+                        height: calc(104.88073489% / min(1, var(--scale-fill, 1)));
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        opacity: 1;
+                        animation: 0s ease 0s 1 normal none running none;
+                      "
+                    >
+                      <img
+                        src="assets/img/8d698ec10d095e41d18848f6311a9058.webp"
+                        alt="Group of People In Dress Suits "
+                        loading="lazy"
+                        style="width: 100%; height: 100%; display: block; object-fit: cover; object-position: 45.35990188% 52.32680239%; transform: translate(-45.35990188%, -52.32680239%) rotate(0deg);"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="QPdMgykck6IhSjA7">
+            <div id="fyBiEcykKdXJ75Sj" style="display: grid; position: relative;">
+              <div id="inzeRoFP1uYLTzO7" style="display: grid; position: relative; grid-area: 2 / 2 / 3 / 3;">
+                <div id="ybd4iDRI27p3vxUg" style="z-index: 13;">
+                  <div id="XPo0yoKRem6cHWAb" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+                    <svg
+                      id="wYLQOmxap2ukxq4P"
+                      viewBox="0 0 393.6984 65.1846"
+                      preserveAspectRatio="none"
+                      style="width: 100%; height: 100%; opacity: 1; overflow: hidden; position: absolute; top: 0%; left: 0%; background: url('data:image/png;base64,');"
+                    >
+                      <g id="nFJlPeiu6VjekL6T" style="transform: scale(1, 1);"><path id="XyCKg023dsZk6cX5" d="M0,0 L393.69841335,0 L393.69841335,65.18460876 L0,65.18460876 Z" style="fill: #141414; opacity: 1;"></path></g>
+                    </svg>
+                  </div>
+                </div>
+                <div id="viDZNB2kCTiDumrz" style="z-index: 14;">
+                  <div id="lI7AEfOx0Due6ssH" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+                    <div id="v0bn4o8J07bev3BG" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                      <p id="TGjofK7ijSrYGN8b" style="color: #ffffff; font-family: YAGAmlCRMfg-0; line-height: 1.35937712em; letter-spacing: 0em;"><span id="Mk48w7tf7eCjdnCK" style="color: #ffffff; font-weight: 700;">Banks</span><br /></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <a id="page-5" aria-hidden="true" style="visibility: hidden;"></a>
+      <section id="RbZFPZMSTEwtvEki" style="position: relative; overflow: hidden; display: grid; align-items: center; grid-template-columns: auto 100rem auto; z-index: 0; margin-top: -1px;">
+        <div id="tw3r4PfPlWfcp0yp" style="grid-area: 1 / 1 / 2 / 4; display: grid; position: absolute; min-height: 100%; min-width: 100%;">
+          <div id="VhQO87VAQeYq8fZO" style="z-index: 0;">
+            <div id="OEqssqtL6MvZivIs" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="ZSZjuKtkuiHVOxtR" style="width: 100%; height: 100%; opacity: 1;">
+                <div id="n52QZlg8m2DAZdNk" style="background-color: #141414; opacity: 1; transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="K2DMkY5YlVhySuWT" style="display: grid; position: relative; grid-area: 1 / 2 / 2 / 3;">
+          <div id="doz7aCJ3w693raIl">
+            <div id="gXHet5A057hQHU5N" style="display: grid; position: relative; grid-area: 2 / 2 / 3 / 3;">
+              <div id="LjzIwZ2L16YfRCzy" style="z-index: 2;">
+                <div id="yNxnKKgkdVj0yRCh" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+                  <div id="AohY8BhyXNISTN9n" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                    <p id="ym54aK0gUVeUsBZW" style="color: #ffffff; font-family: YAGAmnsZudI-0; line-height: 1.2826087em; text-align: center; text-transform: none; letter-spacing: 0em;">
+                      <span id="SAieflDvTu1ta86m" style="color: #ffffff;">
+                        "Technology is the application of individual or group knowledge to make human action more efficient. A Sovereign Standard is the framework of rules for using technology to achieve virtue."
+                      </span>
+                      <br />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div id="J5t2211NxpM0bRhf" style="z-index: 3;">
+                <div id="UO97gqJWvZhj0xmy" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+                  <div id="Fu4ZWtwjcpcI4yl6" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                    <p id="MvOJmDjNHcjP682T" style="color: #d8d7d5; font-family: YAGAmlCRMfg-0; line-height: 1.28569821em; text-align: center; text-transform: none; letter-spacing: 0em;">
+                      <span id="yrKW2pe4EhuGzAaF" style="color: #d8d7d5; font-weight: 700;">SV's manifesto</span><br />
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <a id="contact" aria-hidden="true" style="visibility: hidden;"></a>
+      <section id="nWa2GmBzbKbfn46X" style="position: relative; overflow: hidden; display: grid; align-items: center; grid-template-columns: auto 100rem auto; z-index: 0; margin-top: -1px;">
+        <div id="fX12nGTIaTWXDGVg" style="grid-area: 1 / 1 / 2 / 4; display: grid; position: absolute; min-height: 100%; min-width: 100%;">
+          <div id="VfM2Dfg77eZ5hICD" style="z-index: 0;">
+            <div id="vgraxemCs9GK8Bc0" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="MYlKPwtOONCk73ky" style="width: 100%; height: 100%; opacity: 1;">
+                <div id="CEBR5mI4BTDK0z0o" style="background-color: #141414; opacity: 1; transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="IWJY8DhEiYuTXQHO" style="display: grid; position: relative; grid-area: 1 / 2 / 2 / 3;">
+          <div id="ASxgouoZrrSHPOWE" style="z-index: 6;">
+            <div id="r0ZPVtyCVScleKel" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="BhtTSx3esplrmpey" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="wqcOsApTwWd5FPu3" style="color: #ffffff; direction: ltr; font-family: YAGAmnsZudI-0; margin-left: 0em; line-height: 1.28571429em; text-align: left; text-transform: none; letter-spacing: 0em;">
+                  <span id="h3jRHEL4gudmb7gJ" style="color: #ffffff;">Get in touch</span><br />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="rWzf1DY8BxEGFk0f" style="z-index: 1;">
+            <div id="hsZ0V7dyQVzsH0Pp" style="padding-top: 79.18303907%; transform: rotate(0deg);">
+              <div id="ndKchidzNGD89cyv" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;">
+                <div id="l7xKcUbJdDvEOieD" style="width: 100%; height: 100%; opacity: 1;">
+                  <div id="brqCeZdBisgXUsD3" style="transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;">
+                    <div
+                      id="t8LwsXOatMezLQrh"
+                      style="
+                        width: calc(141.27859397% * max(1, var(--scale-fill, 1)));
+                        height: calc(118.76099379% / min(1, var(--scale-fill, 1)));
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        opacity: 1;
+                        animation: 0s ease 0s 1 normal none running none;
+                      "
+                    >
+                      <img
+                        src="assets/img/e78ff1bf64355041990f6071b114a100.webp"
+                        loading="lazy"
+                        srcset="assets/img/9a5c09f4659b76095ef4f15a5821ddbb.jpg 764w, assets/img/e78ff1bf64355041990f6071b114a100.webp 1528w"
+                        sizes="(max-width: 375px) 129.22282062vw, (min-width: 375.05px) and (max-width: 480px) 131.86002104vw, (min-width: 480.05px) and (max-width: 768px) 123.68189518vw, (min-width: 768.05px) and (max-width: 1024px) 92.76142138vw, (min-width: 1024.05px) 69.53711237vw"
+                        style="width: 100%; height: 100%; display: block; object-fit: cover; object-position: 46.83388256% 57.89863456%; transform: translate(-46.83388256%, -57.89863456%) rotate(0deg);"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="p9QHRW5cEMzYatZL" style="z-index: 7;">
+            <div id="U5FGBHYQBEOlpqcA" style="padding-top: 20.51282051%; transform: rotate(0deg);">
+              <div id="jNIqd6MpjzdkTeVl" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;">
+                <div id="QwaQosHqptTfx9sP" style="width: 100%; height: 100%; opacity: 1;">
+                  <div id="pJDJCKSPyfAqhla2" style="transform: scale(1, 1); width: 100%; height: 100%; overflow: hidden; position: relative;">
+                    <div
+                      id="zuNIyel3Rk75im9e"
+                      style="width: calc(100% * max(1, var(--scale-fill, 1))); height: calc(100% / min(1, var(--scale-fill, 1))); position: absolute; top: 50%; left: 50%; opacity: 1; animation: 0s ease 0s 1 normal none running none;"
+                    >
+                      <img src="assets/img/7fde56496cb04a6eb830bea90550812b.svg" loading="lazy" style="width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 50%; transform: translate(-50%, -50%) rotate(0deg);" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="ZCLtFafFtPbsYUd5" style="z-index: 3;">
+            <div id="UHmMDX5aZWU0EtCl" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="rWPMS1HvXNkRX32p" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="Uhak3Tg2UzfTJySC" style="color: #9b9b9b; font-family: YAGAmlCRMfg-0; line-height: 1.38158077em; letter-spacing: 0em;"><span id="wF6L7dOu0VXM2pYT" style="color: #9b9b9b; font-weight: 700;">Address</span><br /></p>
+              </div>
+            </div>
+          </div>
+          <div id="JbFct2Dohl4K0a4s" style="z-index: 2;">
+            <div id="lJ7z29ywxYusppFU" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="yxDnZcfmgDN190Fk" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="SOqqkX34Q0eINYBp" style="color: #ffffff; font-family: YAGAmlCRMfg-0; line-height: 1.4em; text-transform: none; letter-spacing: 0em;">
+                  <span id="uZQQMh2PuT2rj817" style="color: #ffffff;">Goodman’s Bay Corporate Centre 2nd Floor West Bay Street Nassau, Bahamas </span><br />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="FD1l78sZje3YKkJo" style="z-index: 4;">
+            <div id="pdhBlf2ojxEr700E" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="tcNADvAq6os3dyhu" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="LSEnKHERWFeATsNr" style="color: #9b9b9b; direction: ltr; font-family: YAGAmlCRMfg-0; margin-left: 0em; line-height: 1.38158077em; text-align: left; text-transform: none; letter-spacing: 0em;">
+                  <span id="ZXGsPHiXoyd5dpY9" style="color: #9b9b9b; font-weight: 700;">Contact</span><br />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="oi8QcWssm2xVrhPb" style="z-index: 5;">
+            <div id="CKPq5myRotu32Om0" style="box-sizing: border-box; width: 100%; height: 100%; transform: rotate(0deg);">
+              <div id="lu0OQYIw1QQrju5r" style="opacity: 1; display: flex; box-sizing: border-box; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%;">
+                <p id="eRLqcxI1gT61hEzv" style="color: #ffffff; direction: ltr; font-family: YAGAmlCRMfg-0; margin-left: 0em; line-height: 1.4em; text-align: left; text-transform: none; letter-spacing: 0em;">
+                  <span id="svs" style="color: #ffffff;"></span><br />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script src="assets/js/939898b427480d700449229ff00dbb8a6f9f77442b532f697866e6914ab88.js" async="" nonce=""></script>
+      <script src="assets/js/781b7c2778641097cc201ef02652a4376abe12baf4b506965843770004e19.js" async="" nonce=""></script>
     </div>
+    <script nonce="">
+      const lang = navigator.language ? navigator.language : "en";
+      const loaded = new Promise((resolve) => {
+        if (document.readyState === "loading") {
+          window.addEventListener("DOMContentLoaded", resolve);
+          return;
+        }
+        resolve();
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var parts = ['ser', 'vices', '@s', 'vstandard', '.c', 'o'];
+        var total = parts[0] + parts[1] + parts[2] + parts[3] + parts[4] + parts[5];
+        var displayArea = document.getElementById('svs');
+        displayArea.textContent = total;
+      });
+    </script>
+
   </body>
 </html>
